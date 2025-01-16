@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Fono</string>
+    <string name="add_name">Nome:</string>
+    <string name="form_title">Dados Pessoais:\n</string>
+    <string name="add_birth">Data de Nascimento:</string>
+    <string name="add_parents">Filiação:</string>
+    <string name="add_career">Profissão:</string>
+    <string name="add_age">Idade:</string>
+    <string name="add_address">Endereço:</string>
+    <string name="add_phone">Telefone:</string>
+</resources>
