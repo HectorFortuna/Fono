@@ -1,6 +1,6 @@
-package com.hectorfortuna.fono.remote
+package com.hectorfortuna.fono.data.remote
 
-import com.hectorfortuna.fono.model.FormModelBody
+import com.hectorfortuna.fono.data.model.FormModelBody
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get

@@ -7,24 +7,22 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.hectorfortuna.fono.R
 import com.hectorfortuna.fono.ui.components.BirthDateTextField
+import com.hectorfortuna.fono.ui.components.ValidatedTextField
 import com.hectorfortuna.fono.ui.theme.FonoTheme
-import com.hectorfortuna.fono.viewmodel.FormViewModel
+import com.hectorfortuna.fono.ui.viewmodel.FormViewModel
 
 @Composable
 fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
@@ -53,11 +51,13 @@ fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
                 )
 
 
-                TextField(
-                    modifier = Modifier.fillMaxWidth(),
+                ValidatedTextField(
                     value = viewModel.patientName,
                     onValueChange = { viewModel.patientName = it },
-                    placeholder = { Text(text = "Nome") }
+                    label = "Nome",
+                    placeholder = "Digite o nome",
+                    isError = viewModel.patientNameError,
+                    errorMessage = "Nome é obrigatório"
                 )
             }
 
@@ -68,12 +68,13 @@ fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
                 )
 
 
-                TextField(
-                    modifier = Modifier.fillMaxWidth(),
+                ValidatedTextField(
                     value = viewModel.patientAge,
                     onValueChange = { viewModel.patientAge = it },
-                    placeholder = { Text(text = "Idade") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    label = "Idade",
+                    placeholder = "Digite a idade",
+                    isError = viewModel.patientAgeError,
+                    errorMessage = "Idade é obrigatória"
                 )
             }
 
@@ -94,20 +95,18 @@ fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
-            TextField(
-                modifier = Modifier
-                    .weight(1f),
+            ValidatedTextField(
                 value = viewModel.fatherName,
                 onValueChange = { viewModel.fatherName = it },
-                placeholder = { Text(text = "Nome do pai") }
+                label = "Nome do pai",
+                placeholder = "Digite o nome do pai",
             )
 
-            TextField(
-                modifier = Modifier
-                    .weight(1f),
+            ValidatedTextField(
                 value = viewModel.motherName,
                 onValueChange = { viewModel.motherName = it },
-                placeholder = { Text(text = "Nome da mãe") }
+                label = "Nome da mãe",
+                placeholder = "Digite o nome da mãe",
             )
         }
 
@@ -118,12 +117,11 @@ fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
             style = MaterialTheme.typography.bodyLarge
         )
 
-        TextField(
-            modifier = Modifier.fillMaxWidth(),
+        ValidatedTextField(
             value = viewModel.career,
             onValueChange = { viewModel.career = it },
-            placeholder = { Text(text = "Profissão") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            label = "Profissão",
+            placeholder = "Digite a profissão"
         )
         Spacer(modifier = Modifier.padding(4.dp))
 
@@ -132,12 +130,13 @@ fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
             style = MaterialTheme.typography.bodyLarge
         )
 
-        TextField(
-            modifier = Modifier.fillMaxWidth(),
+        ValidatedTextField(
             value = viewModel.address,
             onValueChange = { viewModel.address = it },
-            placeholder = { Text(text = "Endereço") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            label = "Endereço",
+            placeholder = "Digite o endereço",
+            isError = viewModel.addressError,
+            errorMessage = "Endereço é obrigatório"
         )
         Spacer(modifier = Modifier.padding(4.dp))
         Text(
@@ -145,12 +144,13 @@ fun FormScreen(viewModel: FormViewModel = hiltViewModel<FormViewModel>()) {
             style = MaterialTheme.typography.bodyLarge
         )
 
-        TextField(
-            modifier = Modifier.fillMaxWidth(),
+        ValidatedTextField(
             value = viewModel.phone,
             onValueChange = { viewModel.phone = it },
-            placeholder = { Text(text = "Telefone") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            label = "Telefone",
+            placeholder = "Digite o telefone",
+            isError = viewModel.phoneError,
+            errorMessage = "O Telefone é obrigatório"
         )
         Spacer(modifier = Modifier.padding(16.dp))
 

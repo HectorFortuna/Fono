@@ -1,9 +1,9 @@
-package com.hectorfortuna.fono.di
+package com.hectorfortuna.fono.data.di
 
-import com.hectorfortuna.fono.remote.KtorRemoteDataSource
-import com.hectorfortuna.fono.remote.RemoteDataSource
-import com.hectorfortuna.fono.repository.FormRepository
-import com.hectorfortuna.fono.repository.FormRepositoryImpl
+import com.hectorfortuna.fono.data.remote.KtorRemoteDataSource
+import com.hectorfortuna.fono.data.remote.RemoteDataSource
+import com.hectorfortuna.fono.data.repository.FormRepository
+import com.hectorfortuna.fono.data.repository.FormRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

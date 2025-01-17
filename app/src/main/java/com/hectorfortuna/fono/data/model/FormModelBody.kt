@@ -1,4 +1,4 @@
-package com.hectorfortuna.fono.model
+package com.hectorfortuna.fono.data.model
 
 import kotlinx.serialization.Serializable
 
@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 data class FormModelBody(
     var patientName: String,
     var patientAge: String,
-    var birthDate: Long,
+    var birthDate: String,
     var fatherName: String,
     var motherName: String,
     var career: String,

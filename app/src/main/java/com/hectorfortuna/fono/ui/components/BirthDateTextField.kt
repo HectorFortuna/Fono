@@ -20,13 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.hectorfortuna.fono.R
-import com.hectorfortuna.fono.ui.toFormattedString
-import com.hectorfortuna.fono.ui.toMonthName
 import java.util.Calendar
 import java.util.Date
 
 @Composable
-fun BirthDateTextField(birthDate: (Long) -> Unit) {
+fun BirthDateTextField(birthDate: (String) -> Unit) {
     Text(
         text = stringResource(id = R.string.add_birth),
         style = MaterialTheme.typography.bodyLarge
@@ -50,8 +48,8 @@ fun BirthDateTextField(birthDate: (Long) -> Unit) {
         DatePickerDialog(context, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
             val newDate = Calendar.getInstance()
             newDate.set(year, month, dayOfMonth)
-            selectedDate = "${month.toMonthName()} $dayOfMonth, $year"
-            birthDate(newDate.timeInMillis)
+            selectedDate = "${dayOfMonth.toString().padStart(2, '0')}/${(month + 1).toString().padStart(2, '0')}/$year"
+            birthDate(selectedDate)
         }, year, month, day)
 
     TextField(

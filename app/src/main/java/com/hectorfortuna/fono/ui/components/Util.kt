@@ -1,4 +1,4 @@
-package com.hectorfortuna.fono.ui
+package com.hectorfortuna.fono.ui.components
 
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
